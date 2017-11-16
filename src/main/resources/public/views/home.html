@@ -1,0 +1,76 @@
+<div ng-controller="ProcessCtrl">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="pull-right">
+				<form class="form-inline" role="form">
+					<div class="form-group">
+						<span> <label for="filter">filtro</label> <select
+							ng-model="states.value" ng-change="filterChange()"
+							class="form-control">
+								<option></option>
+								<option ng-repeat="state in states">{{state}}</option>
+						</select>
+						</span> <span> <label for="size">exibir</label> <select id="size"
+							ng-model="size.value" ng-change="sizeChange()"
+							class="form-control">
+								<option>5</option>
+								<option>10</option>
+								<option>20</option>
+								<option>30</option>
+								<option>40</option>
+								<option>50</option>
+						</select>
+						</span>
+					</div>
+				</form>
+			</div>
+			<h4>Processos</h4>
+		</div>
+
+		<div class="panel-body">
+			<div class="table-container">
+				<div>
+					<ul uib-pagination total-items="total_elements"
+						items-per-page="items_per_page" max-size="5"
+						ng-model="currentPage" ng-change="pageChange()"
+						class="pagination-sm" boundary-links="true">
+					</ul>
+
+					<div class="btn-group pull-right">
+						<button class="btn btn-danger" title="Nova tarefa"
+							ng-click="openModal()">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+
+				</div>
+
+
+				<table class="table table-filter">
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>Status</th>
+							<th>Tarefa</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="task in content">
+							<td>{{task.id}}</td>
+							<td>{{task.state}}</td>
+							<td>{{task.name}}</td>
+							<td class="text-right"><a type="button" ng-click="removeProcess(task.id)"
+								class="btn btn-warning" title="Deletar"> <span
+									class="glyphicon glyphicon-minus"></span>
+							</a> <a type="button" class="btn btn-success"
+								href="#/detail/{{task.id}}" title="Executar"> <span
+									class="glyphicon glyphicon-send"></span>
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

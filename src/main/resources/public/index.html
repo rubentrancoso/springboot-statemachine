@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="app" class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+<title>PoC Spring StateMachine</title>
+<link rel="stylesheet" href="/css/app.css">
+<link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css' />
+</head>
+<body>
+
+
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+				<div class="btn-group pull-right">
+					<a href="/#/" class="btn btn-primary" title="home">
+						<span class="glyphicon glyphicon-home"></span>
+					</a>
+					<button class="btn btn-info" title="Informa&ccedil;&otilde;es"
+						data-toggle="collapse" data-target="#about">
+						<span class="glyphicon glyphicon-question-sign"></span>
+					</button>
+				</div>
+			<div>
+				<h1>PoC StateMachine</h1>
+				<p>Esta &eacute; uma aplica&ccedil;&atilde;o para testes do
+					Spring StateMachine.</p>
+			</div>
+			<div id="about" class="panel panel-default collapse">
+				<div class="panel-body">
+					<p>
+						A aplica&ccedil;&atilde;o consiste em uma lista de tarefas. Quando
+						uma nova tarefa &eacute; cadastrada ela fica como "<strong>NOT_STARTED</strong>".
+						Ao iniciar a tarefa evolui para "<strong>WORKING</strong>" e
+						&eacute; chamado um servi&ccedil;o que pode demorar at&eacute; 1
+						minuto para responder. Caso o servi&ccedil;o responda com sucesso
+						em at&eacute; 30s a tarefa evolui para "<strong>DONE</strong>" e
+						&eacute; conclu&iacute;da. Quando o servi&ccedil;o demora mais de
+						30 segundo para responder a tarefa evolui para "<strong>ERROR</strong>"
+						e aguarda 30s para repetir a atividade, evoluindo o estado de
+						volta para "<strong>WORKING</strong>". Ap&oacute;s 3 tentativas
+						mal sucedidas de completar a tarefa, seu estado passa para "<strong>PENDING</strong>"
+						quando o usu&aacute;rio pode tentar manualmente.
+					</p>
+					<img class="img-responsive center-block"
+						alt="Diagrama StateMachine" src="images/diagram.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<section class="content">
+			<div class="col-md-8 col-md-offset-2">
+				<div ng-view></div>
+			</div>
+		</section>
+	</div>
+
+	<script src="/webjars/angularjs/angular.js"></script>
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/webjars/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="/webjars/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="/webjars/angularjs/angular-resource.js"></script>
+	<script src="/webjars/angular-route/angular-route.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/controller.js"></script>
+</body>
+</html>

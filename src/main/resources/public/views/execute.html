@@ -1,0 +1,126 @@
+<form class="form-horizontal" role="form" ng-submit="submit()"
+	ng-controller="ExecuteCtrl">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>Processo</h4>
+		</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="processId" class="col-sm-2 control-label">Id</label>
+				<div class="col-sm-4">
+					<span class="form-control">{{process.id}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="processName" class="col-sm-2 control-label">Name</label>
+				<div class="col-sm-4">
+					<span class="form-control">{{process.name}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="processState" class="col-sm-2 control-label">State</label>
+				<div class="col-sm-4">
+					<span class="form-control">{{process.state}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">Globais</h4>
+		</div>
+		<div id="globais" class="panel-body">
+
+			<div id="{{$index}}" class="form-group"
+				data-ng-repeat="global in globals">
+				<div class="col-sm-2">
+					<input id="global_name_new-{{$index}}"
+						ng-model="globals[$index].name" class="form-control">
+				</div>
+				<div class="col-sm-2">
+					<select class="form-control" ng-model="globals[$index].type">
+						<option>int</option>
+						<option>boolean</option>
+						<option>string</option>
+					</select>
+				</div>
+				<div class="col-sm-4">
+					<input id="global_value_new-{{$index}}"
+						ng-model="globals[$index].value" class="form-control">
+				</div>
+				<div class="col-sm-4">
+					<button type="button" class="btn btn-warning"
+						ng-click="removeGlobal($index)">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</div>
+			</div>
+
+			<button type="button" class="btn btn-danger" ng-click="addGlobal()">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">Inputs</h4>
+		</div>
+		<div id="imediates" class="panel-body">
+
+			<div id="{{$index}}" class="form-group"
+				data-ng-repeat="imediate in imediates">
+				<div class="col-sm-2">
+					<input id="imediate_name_new-{{$index}}"
+						ng-model="imediates[$index].name" class="form-control">
+				</div>
+				<div class="col-sm-2">
+					<select class="form-control" ng-model="imediates[$index].type">
+						<option>int</option>
+						<option>boolean</option>
+						<option>string</option>
+					</select>
+				</div>
+				<div class="col-sm-4">
+					<input id="imediate_value_new-{{$index}}"
+						ng-model="imediates[$index].value" class="form-control">
+				</div>
+				<div class="col-sm-4">
+					<button type="button" class="btn btn-warning"
+						ng-click="removeImediate($index)">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</div>
+			</div>
+
+			<button type="button" class="btn btn-danger" ng-click="addImediate()">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+
+		</div>
+	</div>
+	<!-- 
+	<button type="submit" id="submit" class="btn btn-success pull-right">
+		Execute <i class="glyphicon glyphicon-send"></i>
+	</button>
+	-->
+	<div class="btn-group pull-right">
+		<span ng-repeat="event in events">
+			<button type="submit" class="btn btn-success"
+				ng-click="setSubmitButton(event)">
+				{{event}} <i class="glyphicon glyphicon-send"></i>
+			</button>
+		</span>
+		<span ng-show="!events.length">Nothing to do.</li>
+	</div>
+	<p>&nbsp;
+	<p>&nbsp;
+	<p>&nbsp;
+	<p>&nbsp;
+	<p>&nbsp;
+	<p>&nbsp;
+</form>
+

@@ -1,0 +1,14 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	<h4>Novo Processo</h4>
+</div>
+<div class="modal-body text-center">
+	<form class="form-inline" role="form">
+		<div class="form-group">
+			<input type="text" class="form-control" id="idName"
+				placeholder="Nome" ng-model="process.name">
+		</div>
+		<button type="submit" class="btn btn-primary" ng-click="okModal()">Salvar</button>
+		<button type='button' class='btn btn-default' ng-click="cancelModal()">Cancelar</button>
+	</form>
+</div>
